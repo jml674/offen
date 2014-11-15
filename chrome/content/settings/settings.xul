@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://offen/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://offen/skin/settings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://offen/skin/channels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://offen/skin/sidebar.css" type="text/css"?>
+
+
+<!DOCTYPE prefwindow [
+<!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
+    %globalDTD;
+<!ENTITY % myextensionDTD SYSTEM "chrome://offen/locale/offen.dtd">
+  %myextensionDTD;
+ <!ENTITY % htmlDTD PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+    %htmlDTD;
+]>
+
+
+
+<prefwindow id="settings-offen" title="&settings.title;"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+     style="max-height:45em"
+     onload="OFFEN.showuploadinglogfile(false);OFFEN.enableSendLogfileButton();"
+     buttons="accept,cancel"
+     ondialogaccept="return OFFEN.settingsDoOK();"
+
+     >
+  <prefpane id="mainPane" label="Main" image="chrome://scraper/skin/images/settings_main.png">
+		<preferences>
+			<preference name="extensions.offen.template.action" type="string" id="actionAndOwner" />
+			<preference name="extensions.offen.template.assignment" type="string" id="assignmentsubject" />
+			<preference name="extensions.offen.template.signature" type="string" id="signature" />
+			<preference name="extensions.offen.template.screening.default" type="string" id="screeningDefault" />
+			<preference name="extensions.offen.template.screening.requestInfo" type="string" id="screeningRequestInfo" />
+			<preference name="extensions.offen.template.emailsubject" type="string" id="emailsubject" />
+  		<preference name="extensions.offen.dayinc.BC" type="int" id="dayincbc" />
+  		<preference name="extensions.offen.dayinc.major" type="int" id="dayincmajor" />
+  		<preference name="extensions.offen.dayinc.minor" type="int" id="dayincminor" />
+   		<preference name="extensions.offen.dayinc.weekdays" type="string" id="weekdays" />
+  		<preference name="extensions.offen.alarm.daysbefore.BC" type="int" id="daybeforealarmbc" />
+  		<preference name="extensions.offen.alarm.daysbefore.major" type="int" id="daybeforealarmmajor" />
+  		<preference name="extensions.offen.alarm.daysbefore.minor" type="int" id="daybeforealarmminor" />  		
+		</preferences>
+   	<scrollbox id="scrollbox-pane" style="overflow:scroll;max-height:35em" orient="vertical" flex="2">
+
+		<groupbox flex="1">
+      <caption label="Week days" />
+      <radiogroup id="group-weekdays" orient="horizontal" preference="weekdays">
+              <radio label="Mon-Fri" value="M-F" />
+              <radio label="Sun-Thu" value="S-T" />
+       </radiogroup>
+    </groupbox>
+		<groupbox>
+			<caption label="Note templates" />
+			<vbox>
+			  <textbox type="autocomplete" autocompletesearch="basic-autocomplete" showcommentcolumn="false"
+         onsearchbegin='OFFEN.restrictValues(this);'
+         completedefaultindex="true"
+         autocompletesearchparam='[{"value":"mark","comment":"cool dude"},{"value":"mary","comment":"nice lady"},{"value":"jimmy","comment":"very uncool guy"},{"value":"jimbo","comment":null}]'/>
+        <hbox>
+				  <label value="Regular" />
+			    <image class="icoReset" tooltiptext="Reset to default" onclick="OFFEN.Pref.resetToDefault('extensions.offen.template.action',document.getElementById('actionAndOwner'));"/>
+				</hbox>
+				<textbox id="actionAndOwner" flex="1" multiline="true" value="" rows="5" preference="actionAndOwner" />
+			</vbox>
+			<vbox>
+        <hbox>
+          <label value="Assignment" />
+          <image class="icoReset" tooltiptext="Reset to default" onclick="OFFEN.Pref.resetToDefault('extensions.offen.template.assignment',document.getElementById('assignmentsubject'));"/>
+				</hbox>
+				<textbox id="assignmentsubject" flex="1" multiline="true" value="" rows="4" preference="assignmentsubject" />
+			</vbox>
+			<vbox>
+        <hbox>
+          <label value="Signature" />
+          <image class="icoReset" tooltiptext="Reset to default" onclick="OFFEN.Pref.resetToDefault('extensions.offen.template.signature',document.getElementById('signature'));"/>
+				</hbox>
+				<textbox id="signature" flex="1" multiline="true" value="" rows="1" preference="signature" />
+			</vbox>	
+			<vbox>
+        <hbox>
+          <label value="Email subject" />
+          <image class="icoReset" tooltiptext="Reset to default" onclick="OFFEN.Pref.resetToDefault('extensions.offen.template.emailsubject',document.getElementById('emailsubject'));"/>
+				</hbox>
+				<textbox id="emailsubject" flex="1" multiline="true" value="" rows="1" preference="emailsubject" />
+			</vbox>
+		</groupbox>
+		<groupbox>
+			<caption label="Increment to current next update date (days)" />
+			<hbox>
+        <label value="BC" />
+		   	<textbox size="2" preference="dayincbc" />
+			  <label value="Major" />
+		   	<textbox size="2" preference="dayincmajor" />
+		   	<label value="Minor" />
+		   	<textbox size="2" preference="dayincminor" />
+			</hbox>
+
+    </groupbox>
+		<groupbox>
+			<caption label="Alarm before expiration(days)" />
+			<hbox>
+        <label value="BC" />
+		   	<textbox size="2" preference="daybeforealarmbc" />
+			  <label value="Major" />
+		   	<textbox size="2" preference="daybeforealarmmajor" />
+		   	<label value="Minor" />
+		   	<textbox size="2" preference="daybeforealarmminor" />
+			</hbox>
+    </groupbox>
+		<groupbox>
+			<caption label="Screening templates" />
+			<vbox>
+        <hbox>
+          <label value="Default" />
+          <image class="icoReset" tooltiptext="Reset to default" onclick="OFFEN.Pref.resetToDefault('extensions.offen.template.screening.default',document.getElementById('screeningDefault'));"/>
+				</hbox>
+				<textbox id="screeningDefault" flex="1" multiline="true" value="" rows="4" preference="screeningDefault" />
+			</vbox>
+			<vbox>
+        <hbox>
+          <label value="Request Info" />
+				  <image class="icoReset" tooltiptext="Reset to default" onclick="OFFEN.Pref.resetToDefault('extensions.offen.template.screening.requestInfo',document.getElementById('screeningRequestInfo'));"/>
+				</hbox>
+
+				<textbox id="screeningRequestInfo" flex="1" multiline="true" value="" rows="2" preference="screeningRequestInfo" />
+			</vbox>
+		</groupbox>		
+  </scrollbox>
+
+	</prefpane>
+	   	
+	<prefpane id="debugPane" label="Debug" image="chrome://offen/skin/images/debug.png">
+		<preferences>
+			<preference name="extensions.offen.loglevel" type="int" id="loglevel" />
+			<preference name="extensions.offen.clearlogfileatstarttime" type="bool" id="clearatstart" />			
+			<preference name="extensions.offen.installdir" type="string" id="installdir" />
+		</preferences>
+		<groupbox>
+			<caption label="Log" />
+			<hbox align="center">
+				<label value="&options.debug.level;" />
+				<textbox type="number" min="0" max="4" size="2" preference="loglevel" />
+				<button label="&options.debug.clearlogfile;" oncommand="OFFEN.ClearLogFile();" />
+				<button id="sendLogfileButton" label="Send logs" oncommand="OFFEN.SendLogFile();" />
+				<checkbox label="&options.debug.clearatstart;" preference="clearatstart" />
+			</hbox>
+			<vbox>
+			  <label id="logdetailstitle" value="Please provide details about the log file you're about to send:" />
+			  <textbox id="logdetails" flex="1" multiline="true" value="" rows="10" />
+			</vbox>
+			
+		
+		</groupbox>
+		<groupbox>
+			<caption label="Installation directory" />
+			<textbox size="42" preference="installdir" readonly="false"/>
+    </groupbox>
+		
+	</prefpane>
+		
+		
+	<script src="chrome://offen/content/preferences.js" type="text/javascript" />
+	<script src="chrome://offen/content/settings/settings.js" type="text/javascript" />
+
+</prefwindow>

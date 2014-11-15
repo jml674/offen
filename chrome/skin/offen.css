@@ -1,0 +1,100 @@
+
+.icoSfdccrutchSmall {
+	list-style-image: url("images/dreamstime_xs_16x16oneblack.jpg");
+	max-height: 16px;
+	max-width: 16px;
+}
+
+.statusFlagOpen {
+    background: -moz-linear-gradient(left, white, green); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, white, green); /* Standard syntax (must be last) */
+}
+.statusFlagClosed {
+    background: -moz-linear-gradient(left, white, red); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, white, red); /* Standard syntax (must be last) */
+}
+.statusFlagUnknown {
+    background: -moz-linear-gradient(left, white, grey); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, white, grey); /* Standard syntax (must be last) */
+}
+
+
+.storenamewithurl:hover {
+	cursor: pointer; 
+  text-decoration: underline;
+  -moz-text-decoration-color: blue;
+}
+.storenamewithurl{
+	font-weight: bold;
+  text-decoration: underline;
+  -moz-text-decoration-color: blue;
+
+}
+
+.storename{
+	font-weight: bold;
+
+}
+
+.noresultfound{
+	font-weight: bold;
+
+}
+
+.businesscard{
+	background: white;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.searchField {
+  background: white;
+  border: 2px solid;
+  border-radius: 5px;
+  margin: 15px;
+}
+.searchresultarea{
+  
+}
+
+.schedules {
+  background: white;
+  font-size: 80%;
+}
+
+.footer {
+  background: white;
+  border: 1px solid;
+  border-color: black;
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.footerlink {
+  text-decoration: underline;
+  -moz-text-decoration-color: blue;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.footerlink:hover {
+	cursor: pointer; 
+  text-decoration: underline;
+  -moz-text-decoration-color: blue;
+}
+.panelbox {
+  margin: 0px;
+  margin-right: 0px;
+  border: 1px solid;
+  border-color: green;
+  background: #216DA2
+ 
+}
+
+.panelSearch {
+   /*background: #216DA2*/
+  border: 0px solid;
+  border-color: red;
+  padding: 0px;
+  margin: 0px;
+}

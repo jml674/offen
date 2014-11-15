@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE overlay SYSTEM "chrome://offen/locale/offen.dtd">
+
+<?xml-stylesheet href="chrome://offen/skin/" type="text/css"?>
+
+<overlay id="overlay-offen" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script src="chrome://offen/content/overlay.js" type="text/javascript" />
+	
+	<script type="text/javascript">
+    	window.addEventListener("load", OFFEN.onOverlayLoad, false);
+    	window.addEventListener("unload", OFFEN.onOverlayUnload, false);
+  </script>
+
+
+</overlay>

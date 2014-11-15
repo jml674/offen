@@ -1,0 +1,9 @@
+component {b5e1d120-4f0a-11e4-916c-0800200c9a66} components/basic_autocomplete.js
+contract @mozilla.org/autocomplete/search;1?name=basic-autocomplete {b5e1d120-4f0a-11e4-916c-0800200c9a66}
+content		offen	chrome/content/ 
+locale		offen	en-US	chrome/locale/en-US/
+locale		offen	de-DE	chrome/locale/de-DE/
+
+resource	offen	resources/
+skin		offen	classic/1.0	chrome/skin/
+overlay	chrome://browser/content/browser.xul	chrome://offen/content/overlay.xul

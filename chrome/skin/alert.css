@@ -1,0 +1,31 @@
+
+
+.alertBox{
+	padding: 5px;
+}
+
+
+#box-alarm grid {
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: auto;
+	min-height: 60px;
+}
+
+.alarm:hover {
+	text-decoration: underline;
+	cursor: pointer;
+	color: blue;
+}
+.alarm {
+	color: blue;
+}
+.alarmTitle {
+	font-weight: bold;
+}
+.tooltipTitle {
+	font-weight: bold;
+}
+.tooltipNote {
+	font-style: italic;
+}
